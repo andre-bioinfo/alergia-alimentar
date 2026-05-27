@@ -5,359 +5,875 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alergia Alimentar</title>
 
-  <!-- FONTE MODERNA -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    body{
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f4f6f8;
-      line-height: 1.7;
-      color: #222;
+
+    :root {
+      --primary: #1a4d7a;
+      --secondary: #2a78b8;
+      --danger: #d62828;
+      --success: #1a7f37;
+      --bg-color: #f0f7fb;
+      --text-dark: #222;
+      --text-light: #555;
     }
 
-    /* TOPO */
-    .topo{
-      background: linear-gradient(135deg, #1a4d7a, #2a78b8);
-      color: white;
-      padding: 80px 20px;
-      text-align: center;
-    }
-
-    .topo h1{
-      margin: 0;
-      font-size: 48px;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-
-    .topo p{
-      margin-top: 12px;
-      font-size: 18px;
-      opacity: 0.95;
-      max-width: 750px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .btn{
-      display: inline-block;
-      margin-top: 30px;
-      background: white;
-      color: #1a4d7a;
-      padding: 12px 28px;
-      border-radius: 30px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .btn:hover{
-      background: #e6f2ff;
-      transform: scale(1.05);
-    }
-
-    /* MENU */
-    nav{
-      background: #143b5c;
-      padding: 12px;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    }
-
-    nav ul{
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding: 0;
-      margin: 0;
-      gap: 15px;
-    }
-
-    nav a{
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      padding: 8px 14px;
-      border-radius: 8px;
-      transition: 0.3s;
-    }
-
-    nav a:hover{
-      background: rgba(255,255,255,0.2);
-      transform: scale(1.05);
-    }
-
-    main{
-      max-width: 1050px;
-      margin: auto;
-      padding: 25px;
-    }
-
-    /* CORREÇÃO DO MENU COBRINDO O TEXTO */
-    section[id]{
-      scroll-margin-top: 120px;
-    }
-
-    /* CARDS */
-    .card{
-      background: white;
-      padding: 25px;
-      margin-bottom: 22px;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      opacity: 0;
-      transform: translateY(30px);
-      animation: aparecer 0.8s ease forwards;
-    }
-
-    .card:nth-child(1){ animation-delay: 0.2s; }
-    .card:nth-child(2){ animation-delay: 0.4s; }
-    .card:nth-child(3){ animation-delay: 0.6s; }
-    .card:nth-child(4){ animation-delay: 0.8s; }
-    .card:nth-child(5){ animation-delay: 1s; }
-    .card:nth-child(6){ animation-delay: 1.2s; }
-
-    @keyframes aparecer{
-      to{
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* TITULOS */
-    h2{
-      color: #1a4d7a;
-      margin-top: 0;
-      font-size: 28px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    h3{
-      margin-top: 0;
-      color: #143b5c;
-    }
-
-    .grid{
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    ul{
-      padding-left: 20px;
-    }
-
-    /* FOOTER */
-    footer{
-      background: #1a4d7a;
-      color: white;
-      text-align: center;
-      padding: 18px;
-      margin-top: 20px;
-    }
-
-    footer p{
-      margin: 0;
-      font-size: 14px;
-      opacity: 0.9;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
     html{
-      scroll-behavior: smooth;
+      scroll-behavior:smooth;
     }
 
-    /* BOTÃO VOLTAR AO TOPO */
-    .top-btn{
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #1a4d7a;
-      color: white;
-      border: none;
-      padding: 12px 18px;
-      border-radius: 50px;
-      font-size: 16px;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: 0.3s;
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background: var(--bg-color);
+      color: var(--text-dark);
+      line-height:1.8;
+    }
+
+    a:focus, button:focus, input:focus {
+      outline: 3px solid #ffcc00;
+      outline-offset: 2px;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero{
+      background:linear-gradient(135deg, var(--primary), var(--secondary));
+      color:white;
+      padding:100px 20px 140px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-content{
+      max-width:1200px;
+      margin:auto;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+      align-items:center;
+      position:relative;
+      z-index:2;
+    }
+
+    .hero-text h1{
+      font-size:65px;
+      line-height:1.1;
+      margin-bottom:15px;
+      font-weight: 700;
+    }
+
+    .hero-text h2{
+      color:#e0f0ff;
+      font-size:26px;
+      margin-bottom:25px;
+      font-weight:400;
+      border:none;
+    }
+
+    .hero-text h2::after {
       display: none;
-      z-index: 1000;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
+    }
+
+    .hero-text p{
+      margin-bottom:18px;
+      font-size:17px;
+      color:#f1f1f1;
+    }
+
+    .hero-img img{
+      width:100%;
+      border-radius:24px;
+      box-shadow:0 20px 40px rgba(0,0,0,0.3);
+      object-fit: cover;
+    }
+
+    .btn{
+      display:inline-block;
+      margin-top:18px;
+      background:white;
+      color:var(--primary);
+      text-decoration:none;
+      padding:14px 30px;
+      border-radius:40px;
+      font-weight:600;
+      transition:0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .btn:hover{
+      transform:translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .btn-emergency{
+      background:var(--danger);
+      color:white;
+      margin-left:12px;
+    }
+
+    .wave-divider {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+
+    .wave-divider svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 70px;
+    }
+
+    .wave-divider .shape-fill {
+      fill: var(--bg-color);
+    }
+
+    /* =========================
+       MENU
+    ========================= */
+
+    nav{
+      position:sticky;
+      top:0;
+      z-index:999;
+      background:rgba(255, 255, 255, 0.95);
+      backdrop-filter:blur(10px);
+      box-shadow:0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    nav ul{
+      list-style:none;
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:8px;
+      padding:12px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    nav a{
+      text-decoration:none;
+      color: var(--text-light);
+      padding:8px 16px;
+      border-radius:30px;
+      transition:0.3s;
+      font-weight:500;
+      display:block;
+      font-size: 15px;
+    }
+
+    nav a:hover{
+      background: #eef6ff;
+      color: var(--primary);
+    }
+
+    .nav-link.active{
+      background:var(--secondary);
+      color:white;
+      font-weight:600;
+    }
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    main{
+      max-width:1150px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    section[id]{
+      scroll-margin-top:100px;
+    }
+
+    .card{
+      background:white;
+      padding:45px;
+      border-radius:24px;
+      margin-bottom:40px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.04);
+      border: 1px solid #eef6ff;
+    }
+
+    .split-content {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .split-content .text-content {
+      flex: 1.2;
+    }
+
+    .split-content .img-content {
+      flex: 1;
+    }
+
+    .split-content .img-content img {
+      width: 100%;
+      border-radius: 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      object-fit: cover;
+      height: 100%;
+      max-height: 350px;
+    }
+
+    h2{
+      color:var(--primary);
+      margin-bottom:25px;
+      font-size:32px;
+      position: relative;
+      padding-bottom: 12px;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--secondary);
+      border-radius: 4px;
+    }
+
+    h3{
+      color:var(--primary);
+      margin-bottom:12px;
+      margin-top:15px;
+      font-size:20px;
+    }
+
+    p{
+      margin-bottom:16px;
+      color: var(--text-light);
+    }
+
+    ul{
+      padding-left:25px;
+      color: var(--text-light);
+    }
+
+    li{
+      margin-bottom:8px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:24px;
+      margin-top: 20px;
+    }
+
+    .mini-card{
+      background:#fdfdfd;
+      padding:30px;
+      border-radius:18px;
+      border:1px solid #eef6ff;
+      transition:0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    }
+
+    .mini-card:hover{
+      transform:translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.06);
+      border-color: #d6e9ff;
+    }
+
+    /* =========================
+       EMERGÊNCIA
+    ========================= */
+    .card-emergencia {
+      border: 2px solid #ffe3e3;
+    }
+
+    .card-emergencia h2::after {
+      background: var(--danger);
+    }
+
+    .alerta-leve {
+      border-top: 5px solid #f4a261;
+    }
+
+    .alerta-grave {
+      background: #fff5f5;
+      border-top: 5px solid var(--danger);
+    }
+
+    .alerta-grave h3 {
+      color: var(--danger);
+    }
+
+    .banner-acao {
+      background: linear-gradient(135deg, var(--danger), #a81c1c);
+      color: white;
+      padding: 40px;
+      border-radius: 20px;
+      margin-top: 35px;
+      text-align: center;
+      box-shadow: 0 15px 30px rgba(214, 40, 40, 0.2);
+    }
+
+    .banner-acao h3 {
+      color: white;
+      font-size: 28px;
+      margin-bottom: 15px;
+      margin-top: 0;
+    }
+
+    .banner-acao p {
+      color: #ffe8e8;
+    }
+
+    .banner-acao ul {
+      list-style: none;
+      padding: 0;
+      font-size: 18px;
+      margin-bottom: 25px;
+      text-align: left;
+      display: inline-block;
+      color: white;
+    }
+
+    .banner-acao li {
+      margin-bottom: 15px;
+      background: rgba(255,255,255,0.1);
+      padding: 10px 20px;
+      border-radius: 8px;
+    }
+
+    .numero-samu {
+      font-size: 40px;
+      font-weight: 700;
+      background: white;
+      color: var(--danger);
+      display: inline-block;
+      padding: 15px 40px;
+      border-radius: 50px;
+      margin-top: 10px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    /* =========================
+       MITOS E VERDADES
+    ========================= */
+    .mitos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .mito-box {
+      background: #fff5f5;
+      border-left: 5px solid var(--danger);
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    .verdade-box {
+      background: #f2fbf4;
+      border-left: 5px solid var(--success);
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 15px;
+    }
+
+    /* =========================
+       QUIZ
+    ========================= */
+    .pergunta-container {
+      background: #fcfcfc;
+      padding: 20px;
+      border-radius: 15px;
+      border: 1px solid #eef6ff;
+      margin-bottom: 25px;
+    }
+
+    .quiz-options {
+      margin-top: 15px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .quiz-options label {
+      display: block;
+      padding: 15px 20px;
+      background: white;
+      border: 2px solid #eef6ff;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.2s;
+      font-weight: 500;
+    }
+
+    .quiz-options label:hover {
+      background: #eef6ff;
+      border-color: var(--secondary);
+    }
+
+    .quiz-options input {
+      margin-right: 12px;
+      transform: scale(1.2);
+    }
+
+    .quiz-btn{
+      background:var(--secondary);
+      color:white;
+      border:none;
+      padding:15px 30px;
+      border-radius:12px;
+      cursor:pointer;
+      margin-top:10px;
+      font-size:16px;
+      font-weight:600;
+      transition:0.3s;
+      width: 100%;
+    }
+
+    .quiz-btn:hover{
+      background:var(--primary);
+    }
+
+    /* =========================
+       FOOTER E BOTÃO
+    ========================= */
+    footer{
+      background:var(--primary);
+      color:white;
+      text-align:center;
+      padding:40px 20px;
+      margin-top:50px;
+    }
+
+    .top-btn{
+      position:fixed;
+      bottom:30px;
+      right:30px;
+      background:var(--primary);
+      color:white;
+      border:none;
+      padding:15px 20px;
+      border-radius:50px;
+      cursor:pointer;
+      display:none;
+      z-index:999;
+      font-weight:600;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
 
     .top-btn:hover{
-      background: #2a78b8;
-      transform: scale(1.1);
+      background:var(--secondary);
+      transform: translateY(-3px);
+    }
+
+    /* =========================
+       RESPONSIVO
+    ========================= */
+    @media(max-width:900px){
+      .hero-content, .split-content, .mitos-grid {
+        grid-template-columns:1fr;
+        gap: 30px;
+      }
+      .hero-text h1{
+        font-size:48px;
+      }
+      .quiz-options {
+        grid-template-columns: 1fr;
+      }
+      .btn{
+        margin-bottom:15px;
+        display: block;
+        text-align: center;
+        margin-left: 0;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <header class="topo">
-    <h1>Alergia Alimentar</h1>
-    <p>Informações essenciais sobre causas, sintomas, consequências e manejo clínico.</p>
-    <a href="#causas" class="btn">Começar</a>
+  <header class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>ALERGIA<br>ALIMENTAR</h1>
+        <h2>Informação que salva vidas</h2>
+        <p>As alergias alimentares representam um importante problema de saúde pública, afetando milhões de pessoas. Muitas reações acontecem por falta de informação ou identificação tardia dos sintomas.</p>
+        <p>Desenvolvemos esta plataforma para promover educação em saúde de forma acessível e rápida, auxiliando na prevenção e manejo de crises.</p>
+        
+        <div style="margin-top: 25px;">
+          <a href="#objetivo" class="btn">Explorar Projeto</a>
+          <a href="#emergencia" class="btn btn-emergency">🚨 Emergência</a>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=1200&auto=format&fit=crop" alt="Mesa com alimentos saudáveis">
+      </div>
+    </div>
+
+    <div class="wave-divider">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,119.78,198.39,114.15C240.56,110.59,282.88,103.11,321.39,56.44Z" class="shape-fill"></path>
+      </svg>
+    </div>
   </header>
 
   <nav>
     <ul>
-      <li><a href="#causas">Causas</a></li>
-      <li><a href="#sintomas">Sintomas</a></li>
-      <li><a href="#consequencias">Consequências</a></li>
-      <li><a href="#condutas">Condutas</a></li>
-      <li><a href="#referencias">Referências</a></li>
-      <li><a href="#contato">Créditos</a></li>
+      <li><a href="#objetivo" class="nav-link">Objetivo</a></li>
+      <li><a href="#equipe" class="nav-link">Equipe</a></li>
+      <li><a href="#emergencia" class="nav-link">Emergência</a></li>
+      <li><a href="#mitos" class="nav-link">Mitos</a></li>
+      <li><a href="#causas" class="nav-link">Causas</a></li>
+      <li><a href="#condutas" class="nav-link">Condutas</a></li>
+      <li><a href="#quiz" class="nav-link">Quiz</a></li>
     </ul>
   </nav>
 
   <main>
 
-    <section id="causas" class="card" aria-labelledby="titulo-causas">
-      <h2 id="titulo-causas">🧬 Causas</h2>
-
-      <div class="grid">
-        <div>
-          <h3>Fatores imunológicos</h3>
-          <p>
-            A alergia alimentar pode ser mediada por IgE ou por mecanismos celulares.
-            O sistema imunológico identifica proteínas alimentares como ameaças e desencadeia uma resposta exagerada.
-          </p>
-        </div>
-
-        <div>
-          <h3>Alérgenos comuns</h3>
+    <section id="objetivo" class="card">
+      <div class="split-content">
+        <div class="text-content">
+          <h2>🎯 Objetivo do Projeto</h2>
+          <p>Este projeto foi desenvolvido como uma estratégia inovadora de educação em saúde, utilizando tecnologia digital para disseminar informações confiáveis sobre alergias alimentares.</p>
+          <p>A plataforma tem como principais focos:</p>
           <ul>
-            <li>Leite</li>
-            <li>Ovo</li>
-            <li>Amendoim</li>
-            <li>Nozes</li>
-            <li>Peixe e crustáceos</li>
-            <li>Soja e trigo</li>
+            <li>Promover conscientização da população;</li>
+            <li>Auxiliar na prevenção de crises alérgicas;</li>
+            <li>Facilitar o acesso à informação embasada;</li>
+            <li>Apoiar profissionais da saúde e ambiente escolar.</li>
           </ul>
         </div>
-
-        <div>
-          <h3>Fatores de risco</h3>
-          <ul>
-            <li>História familiar de alergia</li>
-            <li>Asma ou dermatite atópica</li>
-            <li>Introdução alimentar precoce ou tardia em alguns casos</li>
-          </ul>
+        <div class="img-content">
+          <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=800&auto=format&fit=crop" alt="Profissional de saúde estudando em um tablet">
         </div>
       </div>
     </section>
 
-
-    <section id="sintomas" class="card" aria-labelledby="titulo-sintomas">
-      <h2 id="titulo-sintomas">⚠️ Sintomas</h2>
-      <ul>
-        <li><strong>Cutâneos:</strong> urticária, angioedema, coceira</li>
-        <li><strong>Gastrointestinais:</strong> dor abdominal, vômito, diarreia</li>
-        <li><strong>Respiratórios:</strong> chiado, tosse, falta de ar</li>
-        <li><strong>Sistêmicos:</strong> tontura, síncope, anafilaxia</li>
-        <li>Sintomas podem aparecer de minutos a poucas horas após a ingestão</li>
-      </ul>
+    <section id="equipe" class="card">
+      <h2>👨‍⚕️ Importância da Equipe Multidisciplinar</h2>
+      <p>O acompanhamento de pacientes com alergia alimentar deve envolver diferentes profissionais da saúde, garantindo diagnóstico correto, orientação nutricional e prevenção de complicações.</p>
+      
+      <div class="grid">
+        <div class="mini-card">
+          <h3 style="font-size: 30px; margin: 0;">💉</h3>
+          <h3>Enfermeiro</h3>
+          <p>Auxilia na educação em saúde, identificação de sinais de emergência e orientação aos pacientes e familiares.</p>
+        </div>
+        <div class="mini-card">
+          <h3 style="font-size: 30px; margin: 0;">🥗</h3>
+          <h3>Nutricionista</h3>
+          <p>Elabora estratégias alimentares seguras, prevenindo deficiências nutricionais e orientando substituições alimentares.</p>
+        </div>
+        <div class="mini-card">
+          <h3 style="font-size: 30px; margin: 0;">⚕️</h3>
+          <h3>Médico Alergologista</h3>
+          <p>Responsável pelo diagnóstico, acompanhamento clínico e tratamento direto das alergias alimentares.</p>
+        </div>
+        <div class="mini-card">
+          <h3 style="font-size: 30px; margin: 0;">🫁</h3>
+          <h3>Fisioterapeuta</h3>
+          <p>Atua na reabilitação respiratória e de capacidade motora em casos de reações alérgicas graves (anafilaxia).</p>
+        </div>
+        <div class="mini-card">
+          <h3 style="font-size: 30px; margin: 0;">🏫</h3>
+          <h3>Escola e Família</h3>
+          <p>Desempenham papel fundamental na prevenção da exposição aos alérgenos e no suporte diário ao paciente.</p>
+        </div>
+      </div>
     </section>
 
-
-    <section id="consequencias" class="card" aria-labelledby="titulo-consequencias">
-      <h2 id="titulo-consequencias">📌 Consequências</h2>
-      <p>
-        Além do impacto fisiológico imediato (ex.: risco de anafilaxia), alergias alimentares afetam
-        a qualidade de vida, nutrição (restrições alimentares), relações sociais e podem gerar custos médicos.
-        Muitas vezes também exigem adaptações escolares e ocupacionais.
-      </p>
-    </section>
-
-
-    <section id="condutas" class="card" aria-labelledby="titulo-condutas">
-      <h2 id="titulo-condutas">🩺 Condutas e manejo</h2>
+    <section id="emergencia" class="card card-emergencia">
+      <h2>⚠️ Sintomas e Emergência</h2>
+      <p>As reações alérgicas podem variar de leves a gravíssimas. Saber identificar os sinais rapidamente é fundamental para salvar vidas.</p>
 
       <div class="grid">
+        <div class="mini-card alerta-leve">
+          <h3>🟡 Sintomas Leves a Moderados</h3>
+          <ul>
+            <li><strong>Pele:</strong> Urticária, vermelhidão e coceira intensa;</li>
+            <li><strong>Gastrointestinais:</strong> Náuseas, dor abdominal ou vômito;</li>
+            <li><strong>Conduta:</strong> Observe atentamente, comunique o médico e administre medicamentos apenas se prescritos.</li>
+          </ul>
+        </div>
+        <div class="mini-card alerta-grave">
+          <h3>🔴 Sintomas Graves (Anafilaxia)</h3>
+          <ul>
+            <li><strong>Respiratórios:</strong> Falta de ar, chiado no peito, tosse persistente;</li>
+            <li><strong>Garganta:</strong> Sensação de aperto, inchaço na língua;</li>
+            <li><strong>Sistêmicos:</strong> Queda de pressão, tontura, confusão mental ou desmaio.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="banner-acao">
+        <h3>🚨 O que fazer em caso de Anafilaxia?</h3>
+        <p style="font-size: 18px; margin-bottom: 25px;"><strong>A anafilaxia é uma emergência médica fatal. Aja imediatamente!</strong></p>
+        <ul>
+          <li>✔️ <strong>1.</strong> Se o paciente tiver uma caneta de adrenalina autoinjetável, aplique imediatamente.</li>
+          <li>✔️ <strong>2.</strong> Deite a pessoa e eleve as pernas (a menos que piore a falta de ar).</li>
+          <li>✔️ <strong>3.</strong> Não ofereça água, comida ou comprimidos por via oral.</li>
+        </ul>
         <div>
+          <span class="numero-samu">Ligue: 192 🚑</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="mitos" class="card">
+      <div class="split-content">
+        <div class="text-content">
+          <h2>🧠 Mitos e Verdades</h2>
+          <p>A desinformação é um dos maiores perigos quando falamos de alergias. Conheça as principais dúvidas:</p>
+          
+          <div class="mitos-grid">
+            <div>
+              <div class="mito-box">
+                <strong>❌ Mito:</strong> "Alergia alimentar é a mesma coisa que intolerância alimentar."
+              </div>
+              <div class="verdade-box">
+                <strong>✔️ Fato:</strong> A alergia envolve o sistema imunológico e pode causar reações graves (anafilaxia). A intolerância afeta a digestão.
+              </div>
+            </div>
+            <div>
+              <div class="mito-box">
+                <strong>❌ Mito:</strong> "Comer só um pedacinho não faz mal."
+              </div>
+              <div class="verdade-box">
+                <strong>✔️ Fato:</strong> Traços e contaminação cruzada (migalhas) são suficientes para desencadear reações severas.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="img-content">
+          <img src="https://images.unsplash.com/photo-1505253758473-96b7015fcd40?q=80&w=800&auto=format&fit=crop" alt="Prato com alimentos que podem causar alergia">
+        </div>
+      </div>
+    </section>
+
+    <section id="causas" class="card">
+      <h2>🧬 Causas e Consequências</h2>
+      <div class="grid">
+        <div class="mini-card">
+          <h3>Fatores Imunológicos</h3>
+          <p>Ocorre mediada por IgE ou por mecanismos celulares. O sistema imune identifica as proteínas dos alimentos como "invasores" ou ameaças ao corpo.</p>
+        </div>
+        <div class="mini-card">
+          <h3>Principais Alérgenos</h3>
+          <p>Os maiores causadores no mundo são: <strong>Leite, Ovo, Amendoim, Nozes, Peixes, Crustáceos, Soja e Trigo</strong>.</p>
+        </div>
+        <div class="mini-card">
+          <h3>Impacto Social</h3>
+          <p>Alergias exigem restrições rigorosas, interferindo na nutrição, nas relações sociais, ambiente escolar e qualidade de vida (impacto psicológico).</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="condutas" class="card">
+      <h2>💉 Condutas e Prevenção</h2>
+      <div class="grid">
+        <div class="mini-card">
           <h3>Diagnóstico</h3>
           <ul>
-            <li>Anamnese detalhada</li>
-            <li>Testes cutâneos (prick test)</li>
-            <li>Dosagem de IgE específica</li>
-            <li>Teste de provocação oral controlado (padrão-ouro)</li>
+            <li>Anamnese detalhada médica;</li>
+            <li>Testes cutâneos (prick test);</li>
+            <li>Dosagem de IgE específica;</li>
+            <li>Teste de provocação oral.</li>
           </ul>
         </div>
-
-        <div>
-          <h3>Tratamento agudo</h3>
+        <div class="mini-card">
+          <h3>Tratamento</h3>
           <ul>
-            <li><strong>Adrenalina intramuscular imediata</strong> em casos de anafilaxia</li>
-            <li>Antihistamínicos conforme indicação médica</li>
-            <li>Corticosteroides como suporte em alguns casos</li>
-            <li>Suporte de via aérea e encaminhamento para emergência</li>
+            <li>Adrenalina intramuscular (anafilaxia);</li>
+            <li>Antihistamínicos e corticosteroides;</li>
+            <li>Encaminhamento emergencial.</li>
           </ul>
         </div>
-
-        <div>
-          <h3>Prevenção e cuidado contínuo</h3>
+        <div class="mini-card">
+          <h3>Cuidado Contínuo</h3>
           <ul>
-            <li>Evitar o alérgeno (leitura de rótulos e risco de contaminação cruzada)</li>
-            <li>Plano de ação por escrito (escola, trabalho e família)</li>
-            <li>Treinamento para uso de autoinjetor de adrenalina (quando disponível)</li>
-            <li>Acompanhamento com alergologista e nutricionista</li>
+            <li>Exclusão total do alérgeno;</li>
+            <li>Leitura minuciosa de rótulos;</li>
+            <li>Plano de ação escolar/familiar.</li>
           </ul>
         </div>
       </div>
     </section>
 
+    <section id="quiz" class="card">
+      <h2>📋 Quiz de Conhecimento</h2>
+      <p style="margin-bottom: 25px;">Teste seus conhecimentos sobre alergia alimentar respondendo às perguntas abaixo:</p>
 
-    <section id="referencias" class="card" aria-labelledby="titulo-referencias">
-      <h2 id="titulo-referencias">📚 Referências</h2>
-      <p>  </p>
-      <ul>
-        <li>vozes da minha cabeça</li>
-        <li></li>
-        <li></li>
-      </ul>
+      <div class="pergunta-container">
+        <p><strong>1.</strong> Quais destes grupos de alimentos são responsáveis pela grande maioria das alergias alimentares?</p>
+        <div class="quiz-options">
+          <label><input type="radio" name="q1" value="errado"> Carne bovina, frango, milho e feijão.</label>
+          <label><input type="radio" name="q1" value="certo"> Leite de vaca, ovo, amendoim e frutos do mar</label>
+          <label><input type="radio" name="q1" value="errado"> Arroz, batata, cenoura e alface.</label>
+          <label><input type="radio" name="q1" value="errado"> Frutas cítricas, apenas.</label>
+        </div>
+      </div>
+
+      <div class="pergunta-container">
+        <p><strong>2.</strong> O que deve ser feito imediatamente em caso de anafilaxia (reação grave)?</p>
+        <div class="quiz-options">
+          <label><input type="radio" name="q2" value="errado"> Dar um copo de água gelada</label>
+          <label><input type="radio" name="q2" value="errado"> Esperar os sintomas passarem</label>
+          <label><input type="radio" name="q2" value="certo"> Aplicar adrenalina autoinjetável e ligar 192</label>
+          <label><input type="radio" name="q2" value="errado"> Oferecer um antialérgico em comprimido</label>
+        </div>
+      </div>
+
+      <div class="pergunta-container">
+        <p><strong>3.</strong> Sobre a diferença entre Alergia Alimentar e Intolerância Alimentar, é correto afirmar:</p>
+        <div class="quiz-options">
+          <label><input type="radio" name="q3" value="errado"> São exatamente a mesma coisa.</label>
+          <label><input type="radio" name="q3" value="certo"> A alergia envolve o sistema imunológico; a intolerância afeta a digestão.</label>
+          <label><input type="radio" name="q3" value="errado"> A intolerância sempre causa anafilaxia.</label>
+          <label><input type="radio" name="q3" value="errado"> Ambas são tratadas exclusivamente com adrenalina.</label>
+        </div>
+      </div>
+
+      <div class="pergunta-container">
+        <p><strong>4.</strong> Pessoas com alergia severa podem ter reações ao consumir apenas migalhas do alimento?</p>
+        <div class="quiz-options">
+          <label><input type="radio" name="q4" value="certo"> Sim, pessoas com alergia alimentar severa podem ter reação mesmo ao consumir quantidades muito pequenas.</label>
+          <label><input type="radio" name="q4" value="errado"> Não, precisa ingerir pelo menos uma porção inteira.</label>
+          <label><input type="radio" name="q4" value="errado"> Não, migalhas não afetam o organismo.</label>
+          <label><input type="radio" name="q4" value="errado"> Apenas se o alimento estiver cru.</label>
+        </div>
+      </div>
+
+      <div class="pergunta-container">
+        <p><strong>5.</strong> Quais procedimentos auxiliam no diagnóstico de alergia alimentar?</p>
+        <div class="quiz-options">
+          <label><input type="radio" name="q5" value="errado"> Raio-X do estômago</label>
+          <label><input type="radio" name="q5" value="errado"> Eletrocardiograma e tomografia</label>
+          <label><input type="radio" name="q5" value="errado"> Ultrassom abdominal</label>
+          <label><input type="radio" name="q5" value="certo"> Teste cutâneo (Prick test) e dosagem de IgE</label>
+        </div>
+      </div>
+
+      <button class="quiz-btn" onclick="corrigirQuiz()">Enviar Todas as Respostas</button>
+      <p id="resultado" style="display:none; margin-top:20px; font-weight:500; font-size: 18px; text-align: center;"></p>
     </section>
 
-
-    <section id="contato" class="card" aria-labelledby="titulo-contato">
-      <h2 id="titulo-contato">👤 Créditos </h2>
-      <p><strong>Alunos:</strong>  André, Elaine, Melissa, Maria Clara </p>
-      <p><strong>Disciplina:</strong> Mecanismos de Lesão e Reparo</p>
-      <p><strong>Professor orientador:</strong> Gilbert carequinha</p>
+    <section id="referencias" class="card">
+      <h2>📚 Referências e Créditos</h2>
+      <div class="split-content">
+        <div class="text-content">
+          <ul>
+            <li>Associação Brasileira de Alergia e Imunologia (ASBAI);</li>
+            <li>Sociedade Brasileira de Pediatria (SBP);</li>
+            <li>Ministério da Saúde - Diretrizes;</li>
+            <li>ABBAS, A.; LICHTMAN, A.H. Imunologia Celular e Molecular.</li>
+            <li>JANEWAY JR., C. A. Imunobiologia.</li>
+          </ul>
+        </div>
+        <div class="text-content" style="background: #fdfdfd; padding: 25px; border-radius: 15px; border: 1px solid #eef6ff;">
+          <h3 style="margin-top: 0;">Projeto Acadêmico</h3>
+         <p>
+  <strong>Alunos:</strong><br>
+  André Lima Da Silva e Silva<br>
+  Maria Elaine Santos Silva<br>
+  Maria Clara Paiva Macedo Fachin<br>
+  Melyssa Santos Soares
+</p>
+          <p><strong>Disciplina:</strong> Mecanismo de Lesão e reparo</p>
+          <p><strong>Professor:</strong> Gilberth Silva Nunes</p>
+        </div>
+      </div>
     </section>
 
   </main>
 
   <footer>
-    <p>Site educativo sobre alergia alimentar — Trabalho acadêmico</p>
+    <p>Site educativo sobre alergia alimentar — Desenvolvido para fins acadêmicos.</p>
   </footer>
 
-  <button class="top-btn" id="topBtn">⬆ Topo</button>
+  <button class="top-btn" id="topBtn">⬆ Voltar</button>
 
   <script>
+    function corrigirQuiz() {
+      let acertos = 0;
+      const total = 5; 
+
+      for (let i = 1; i <= total; i++) {
+        const respostaSelecionada = document.querySelector(`input[name="q${i}"]:checked`);
+        if (respostaSelecionada && respostaSelecionada.value === "certo") {
+          acertos++;
+        }
+      }
+
+      const res = document.getElementById("resultado");
+      res.style.display = "block";
+      res.style.padding = "15px";
+      res.style.borderRadius = "10px";
+      
+      if (acertos === total) {
+        res.style.backgroundColor = "#d4edda";
+        res.style.color = "#155724";
+        res.innerHTML = `✅ Parabéns! Você acertou todas as ${total} questões!`;
+      } else {
+        res.style.backgroundColor = "#fff3cd";
+        res.style.color = "#856404";
+        res.innerHTML = `⚠️ Você acertou ${acertos} de ${total} perguntas. Revise o conteúdo do site e tente novamente!`;
+      }
+    }
+
     const topBtn = document.getElementById("topBtn");
 
-    window.onscroll = function(){
-      if(document.documentElement.scrollTop > 300){
+    window.addEventListener("scroll",()=>{
+      if(window.scrollY > 300){
         topBtn.style.display = "block";
-      } else {
+      }else{
         topBtn.style.display = "none";
       }
-    };
 
-    topBtn.onclick = function(){
-      window.scrollTo({top: 0, behavior: "smooth"});
+      let current = "";
+      document.querySelectorAll("section[id]").forEach(section=>{
+        const sectionTop = section.offsetTop - 150;
+        if(window.scrollY >= sectionTop){
+          current = section.getAttribute("id");
+        }
+      });
+
+      document.querySelectorAll(".nav-link").forEach(link=>{
+        link.classList.remove("active");
+        if(link.getAttribute("href") === "#" + current){
+          link.classList.add("active");
+        }
+      });
+    });
+
+    topBtn.onclick = ()=>{
+      window.scrollTo({
+        top:0,
+        behavior:"smooth"
+      });
     };
   </script>
 
