@@ -10,7 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-
     :root {
       --primary: #1a4d7a;
       --secondary: #2a78b8;
@@ -503,11 +502,54 @@
       .quiz-options {
         grid-template-columns: 1fr;
       }
-      .btn{
-        margin-bottom:15px;
+    }
+
+    /* Regras específicas para celulares */
+    @media(max-width:600px){
+      .hero {
+        padding: 50px 15px 100px;
+      }
+      .hero-text h1 {
+        font-size: 38px;
+      }
+      .hero-text h2 {
+        font-size: 20px;
+      }
+      .card {
+        padding: 25px 15px;
+        margin-bottom: 25px;
+      }
+      h2 {
+        font-size: 26px;
+      }
+      .btn {
         display: block;
+        width: 100%;
         text-align: center;
+        margin: 10px 0 0 0;
+      }
+      .btn-emergency {
         margin-left: 0;
+      }
+      .mini-card {
+        padding: 20px;
+      }
+      .banner-acao {
+        padding: 25px 15px;
+      }
+      .banner-acao h3 {
+        font-size: 24px;
+      }
+      .numero-samu {
+        font-size: 28px;
+        padding: 12px 25px;
+      }
+      nav a {
+        padding: 6px 12px;
+        font-size: 14px;
+      }
+      nav ul {
+        gap: 4px;
       }
     }
   </style>
@@ -520,9 +562,9 @@
       <div class="hero-text">
         <h1>ALERGIA<br>ALIMENTAR</h1>
         <h2>Informação que salva vidas</h2>
-        <p>As alergias alimentares representam um importante problema de saúde pública, afetando milhões de pessoas. Muitas reações acontecem por falta de informação ou identificação tardia dos sintomas.</p>
+        <p>As allergies alimentares representam um importante problema de saúde pública, afetando milhões de pessoas. Muitas reações acontecem por falta de informação ou identificação tardia dos sintomas.</p>
         <p>Desenvolvemos esta plataforma para promover educação em saúde de forma acessível e rápida, auxiliando na prevenção e manejo de crises.</p>
-        
+         
         <div style="margin-top: 25px;">
           <a href="#objetivo" class="btn">Explorar Projeto</a>
           <a href="#emergencia" class="btn btn-emergency">🚨 Emergência</a>
@@ -576,7 +618,7 @@
     <section id="equipe" class="card">
       <h2>👨‍⚕️ Importância da Equipe Multidisciplinar</h2>
       <p>O acompanhamento de pacientes com alergia alimentar deve envolver diferentes profissionais da saúde, garantindo diagnóstico correto, orientação nutricional e prevenção de complicações.</p>
-      
+       
       <div class="grid">
         <div class="mini-card">
           <h3 style="font-size: 30px; margin: 0;">💉</h3>
@@ -648,7 +690,7 @@
         <div class="text-content">
           <h2>🧠 Mitos e Verdades</h2>
           <p>A desinformação é um dos maiores perigos quando falamos de alergias. Conheça as principais dúvidas:</p>
-          
+           
           <div class="mitos-grid">
             <div>
               <div class="mito-box">
@@ -795,13 +837,13 @@
         </div>
         <div class="text-content" style="background: #fdfdfd; padding: 25px; border-radius: 15px; border: 1px solid #eef6ff;">
           <h3 style="margin-top: 0;">Projeto Acadêmico</h3>
-         <p>
-  <strong>Alunos:</strong><br>
-  André Lima Da Silva e Silva<br>
-  Maria Elaine Santos Silva<br>
-  Maria Clara Paiva Macedo Fachin<br>
-  Melyssa Santos Soares
-</p>
+          <p>
+            <strong>Alunos:</strong><br>
+            André Lima Da Silva e Silva<br>
+            Maria Elaine Santos Silva<br>
+            Maria Clara Paiva Macedo Fachin<br>
+            Melyssa Santos Soares
+          </p>
           <p><strong>Disciplina:</strong> Mecanismo de Lesão e reparo</p>
           <p><strong>Professor:</strong> Gilberth Silva Nunes</p>
         </div>
@@ -832,7 +874,7 @@
       res.style.display = "block";
       res.style.padding = "15px";
       res.style.borderRadius = "10px";
-      
+       
       if (acertos === total) {
         res.style.backgroundColor = "#d4edda";
         res.style.color = "#155724";
